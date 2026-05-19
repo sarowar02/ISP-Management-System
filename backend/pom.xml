@@ -95,6 +95,7 @@
     </dependencies>
 
     <build>
+        <finalName>isp-management-system</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

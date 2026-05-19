@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+
+  mysql:
+    image: mysql:8
+    container_name: isp_mysql
+    restart: always
+
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: isp_management
+      MYSQL_USER: sarowar
+      MYSQL_PASSWORD: admin
+
+    ports:
+      - "3307:3306"
+
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  backend:
+    build: .
+    container_name: isp_backend
+    restart: always
+
+    ports:
+      - "8080:8080"
+
+    depends_on:
+      - mysql
+
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/isp_management
+      SPRING_DATASOURCE_USERNAME: sarowar
+      SPRING_DATASOURCE_PASSWORD: admin
+
+volumes:
+  mysql_data:
