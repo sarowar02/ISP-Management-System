@@ -4,6 +4,18 @@ A full-stack ISP (Internet Service Provider) management system that automates us
 
 ---
 
+# 🚀 How to Run This Project
+Clone the repo <br >
+
+Backend : <br >
+* `cd backend` <br >
+* `docker compose up --build` <br >
+
+Frontend : <br >
+* `cd frontend` <br >
+* `npm install` <br >
+* `npm start`
+
 ##  Features
 
 ###  Admin Panel
