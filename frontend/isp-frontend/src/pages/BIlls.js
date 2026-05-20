@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import API from "../services/api";
 import Navbar from "../components/Navbar";
 
@@ -39,13 +39,15 @@ function Bills() {
       .catch(err => console.error(err));
   };
 
-    const searchBills = () => {
+    const searchBills = useCallback(() => {
     if (!search) return fetchBills();
 
     API.get(`/bills/search?keyword=${search}`)
       .then(res => setBills(res.data.data))
       .catch(err => console.error(err));
-  };
+  }, [search]);
+
+
   const resetSearchBills = () =>{
     setSearch("");
     fetchBills();
@@ -60,7 +62,7 @@ function Bills() {
     }, 500);
 
     return () => clearTimeout(delay);
-  }, [search]);
+  }, [searchBills]);
   
 
   return (

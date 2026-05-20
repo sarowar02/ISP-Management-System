@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import API from "../services/api";
 import Navbar from "../components/Navbar";
 
@@ -7,13 +7,13 @@ function Users() {
   const [packages, setPackages] = useState([]);
   const [search, setSearch] = useState("");
 
-    const searchUsers = () => {
+    const searchUsers = useCallback(() => {
     if (!search) return fetchUsers();
 
     API.get(`/users/search?keyword=${search}`)
       .then(res => setUsers(res.data.data))
       .catch(err => console.error(err));
-  };
+  },[search]);
 
   const [form, setForm] = useState({
     name: "",
@@ -77,7 +77,7 @@ function Users() {
     }, 500);
 
     return () => clearTimeout(delay);
-  }, [search]);
+  }, [searchUsers]);
 
   const resetSearchUser = () =>{
     setSearch("");
