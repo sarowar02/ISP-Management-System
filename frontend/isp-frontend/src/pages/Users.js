@@ -70,7 +70,7 @@ function Users() {
       })
       .catch(err => console.error(err));
   };
-
+  // eslint-disable-next-line
   useEffect(() => {
     const delay = setTimeout(() => {
       searchUsers();
@@ -146,7 +146,7 @@ return (
               <td>{u.phone}</td>
               <td>{u.mikrotikUsername}</td>
               <td>{u.packageName}</td>
-              {u.status == "ACTIVE" ? <td style={{color:"green"}}>ACTIVE</td> : 
+              {u.status === "ACTIVE" ? <td style={{color:"green"}}>ACTIVE</td> : 
                 <td style={{color:"red"}}>INACTIVE</td>}
               <td>
                 <button onClick={() => toggleStatus(u)}>

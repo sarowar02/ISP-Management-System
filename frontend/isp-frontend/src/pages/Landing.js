@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import API from "../services/api";
 import "./Landing.css";
-import Login from "./Login"
 import Navbar from "../components/Navbar"
 
 function Landing() {
@@ -9,7 +8,6 @@ function Landing() {
   const [form, setForm] = useState({ username: "", phone: "" });
   const [bills, setBills] = useState([]);
 
-  const token = localStorage.getItem("token");
 
   useEffect(() => {
     API.get("/packages")

@@ -51,6 +51,9 @@ function Bills() {
     fetchBills();
   }
 
+
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => {
     const delay = setTimeout(() => {
       searchBills();
